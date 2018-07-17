@@ -1,6 +1,6 @@
 import grapesjs from 'grapesjs';
 
-export default grapesjs.plugins.add('gjs-mjml', (editor, opts = {}) => {
+export default grapesjs.plugins.add('gjs-press', (editor, opts = {}) => {
 
   const opt = {
 
