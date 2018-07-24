@@ -12,7 +12,8 @@ module.exports = (env = {}) => {
       new webpack.BannerPlugin(`${name} - ${pkg.version}`),
     ]
   } else {
-    const index = 'index.html';
+    //const index = 'index.html';
+    const index = 'index-customui.html';
     const indexDev = '_' + index;
     plugins.push(new HtmlWebpackPlugin({
       template: fs.existsSync(indexDev) ? indexDev : index

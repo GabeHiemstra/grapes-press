@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GrapesJS Plugin</title>
+  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/grapesjs"></script>
+  <script src="dist/grapesjs-press.min.js"></script>
+  <style>
+    
+    body, html{ height: 100%; margin: 0;}
+    body, html{
+      margin: 0;
+      font: caption;
+      height: 100%;
+    }
+
+    .gjs-pn-panel{position: relative;}
+    .row{display: flex; justify-content: flex-start; align-items: stretch; flex-wrap: nowrap;}
+    .column{min-height: 75px; flex-grow: 1; flex-basis: 100%; overflow: auto;}
+    .editor-clm{display: flex; flex-direction: column;}
+    .gjs-cv-canvas{width: 100%; height: 100%; top: 0;}
+    .gjs-blocks-cs{border: 1px solid rgba(0,0,0,0.3); border-top: none;}
+
+    /* Theming */
+    .gjs-one-bg{background-color: #242A3B;}
+    .gjs-two-color{color: #ddd;}
+    .gjs-three-bg{background-color: #1E8FE1; color: white;}
+    .gjs-four-color,
+    .gjs-four-color-h:hover{color: #1E8FE1;}
+  </style>
+</head>
+<body>
+
+<div class="row" style="height:100%;">
+
+  <div id="block-manager" class="column gjs-one-bg gjs-two-color" style="display:flex;flex-direction:column;align-items:stretch;flex-basis: 500px;">
+    Component Manager
+    <br>
+  </div>
+
+  <div class="column editor-clm">
+    <div id="options-manager" style="top:auto;right:auto;"></div>
+    <div id="gjs2" style="overflow:hidden;">
+      <mj-container>
+        <!-- Company Header -->
+        <mj-section background-color="#f0f0f0">
+          <mj-column>
+            <mj-text font-style="italic" font-size="20" color="#626262">
+              My Company
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Image Header -->
+        <mj-section background-url="http://1.bp.blogspot.com/-TPrfhxbYpDY/Uh3Refzk02I/AAAAAAAALw8/5sUJ0UUGYuw/s1600/New+York+in+The+1960's+-+70's+(2).jpg" background-size="cover" background-repeat="no-repeat">
+          <mj-column>
+            <mj-text align="center" color="#fff" font-size="40" font-family="Helvetica Neue">Slogan here</mj-text>
+            <mj-button background-color="#F63A4D" href="#">
+              Promotion
+            </mj-button>
+          </mj-column>
+        </mj-section>
+
+        <!-- Intro text -->
+        <mj-section background-color="#fafafa">
+          <mj-column width="400">
+            <mj-text font-style="italic" font-size="20" font-family="Helvetica Neue" color="#626262">My Awesome Text</mj-text>
+            <mj-text color="#525252">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu semper augue semper. Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus, sit amet suscipit nibh. Proin nec commodo purus. Sed eget
+              nulla elit. Nulla aliquet mollis faucibus.
+            </mj-text>
+            <mj-button background-color="#F45E43" href="#">Learn more</mj-button>
+          </mj-column>
+        </mj-section>
+
+        <!-- Side image -->
+        <mj-section background-color="white">
+          <mj-column>
+            <mj-image width="200" src="https://designspell.files.wordpress.com/2012/01/sciolino-paris-bw.jpg" />
+          </mj-column>
+          <mj-column>
+            <mj-text font-style="italic" font-size="20" font-family="Helvetica Neue" color="#626262">
+              Find amazing places
+            </mj-text>
+            <mj-text color="#525252">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu semper augue semper. Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus.</mj-text>
+          </mj-column>
+        </mj-section>
+
+
+        <!-- Icons -->
+        <mj-section background-color="#fbfbfb">
+          <mj-column>
+            <mj-image width="100" src="http://191n.mj.am/img/191n/3s/x0l.png" />
+          </mj-column>
+          <mj-column>
+            <mj-image width="100" src="http://191n.mj.am/img/191n/3s/x01.png" />
+          </mj-column>
+          <mj-column>
+            <mj-image width="100" src="http://191n.mj.am/img/191n/3s/x0s.png" />
+          </mj-column>
+        </mj-section>
+
+        <!-- Footer -->
+        <mj-section background-color="#e7e7e7">
+          <mj-column>
+            <mj-button href="#">Hello There!</mj-button>
+            <mj-social display="facebook twitter" />
+          </mj-column>
+        </mj-section>
+        <!-- Footer -->
+      </mj-container>
+    </div>
+  </div>
+
+  <div id="style-manager" class="column" style="flex-basis: 500px">
+    Style Manager
+    <br>
+    <!-- <div id="selectors-container"></div> -->
+    <div id="traits-container"></div>
+    <div id="style-manager-container"></div>
+  </div>
+</div>
+
+<script>
+  var editor  = grapesjs.init({
+        container  : '#gjs2',
+        height: '100%',
+        fromElement: true,
+        storageManager: { type: 0 },
+        plugins: ['gjs-press'],
+        pluginsOpts: {
+          'gjs-press': {}
+        },
+
+        /*layerManager: {
+          appendTo: '#layers-container'
+        },*/
+        blockManager: {
+          appendTo: '#block-manager'
+        },
+        styleManager: {
+          appendTo: '#style-manager-container',
+          /*sectors: [{
+            name: 'Dimension',
+            open: false,
+            buildProps: ['width', 'height', 'max-width', 'min-height', 'margin', 'padding'],
+            properties:[{
+              property: 'margin',
+              properties:[
+                { name: 'Top', property: 'margin-top'},
+                { name: 'Right', property: 'margin-right'},
+                { name: 'Bottom', property: 'margin-bottom'},
+                { name: 'Left', property: 'margin-left'}
+              ],
+            },{
+              property  : 'padding',
+              detached: true,
+              properties:[
+                { name: 'Top', property: 'padding-top'},
+                { name: 'Right', property: 'padding-right'},
+                { name: 'Bottom', property: 'padding-bottom'},
+                { name: 'Left', property: 'padding-left'}
+              ],
+            }],
+          }]*/
+        },
+        /*selectorManager: {
+          appendTo: '#selectors-container',
+        },*/
+        traitManager: {
+          appendTo: '#traits-container',
+        },
+        panels: {
+          defaults: [{
+            id: 'styles',
+            el: '#style-manager',
+            resizable: {
+              tc: 0,
+              cr: 0,
+              cl: 1,
+              bc: 0,
+              keyWidth: 'flex-basis',
+            },
+          },{
+            id: 'options',
+            el: '#options-manager', 
+            buttons: [{
+                id: 'preview',
+                className: 'fa fa-eye',
+                command: 'preview',
+                context: 'preview',
+                attributes: { title: 'Preview' }
+              },{
+                id: 'export-template',
+                className: 'fa fa-code',
+                command: 'export-template',
+                attributes: { title: 'View code' }
+              }]
+          }]
+        }
+      });
+
+  window.editor = editor;
+</script>
+</body>
+</html>
