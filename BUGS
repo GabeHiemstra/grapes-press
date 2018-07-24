@@ -1,0 +1,14 @@
+Bugs:
+
+========================
+Na het zetten van bepaalde eigenschappen:
+width/padding/background-color
+kan niet meer terug worden gegaan naar standaar, door het weg te halen; de waarde wordt wel weggehaald, maar visueel blijft de laatst ingevoerde waarde staan
+
+========================
+alle componenten verwijderen zorgt voor een crash
+
+========================
+Van sommige eigenschappen wordt de initiele waarde niet juist overgenomen:
+bv. padding staat overaal steeds op 0
+Als je dan een waarde aanpast, begint deze op 0 en springt het visuele element naar 0
