@@ -21,7 +21,7 @@
     .editor-clm{display: flex; flex-direction: column;}
     .gjs-cv-canvas{width: 100%; height: 100%; top: 0;}
     .gjs-blocks-cs{border: 1px solid rgba(0,0,0,0.3); border-top: none;}
-
+    .gjs-pn-buttons{justify-content: flex-end;}
     /* Theming */
     .gjs-one-bg{background-color: #242A3B;}
     .gjs-two-color{color: #ddd;}
@@ -133,42 +133,12 @@
         pluginsOpts: {
           'gjs-press': {}
         },
-
-        /*layerManager: {
-          appendTo: '#layers-container'
-        },*/
         blockManager: {
           appendTo: '#block-manager'
         },
         styleManager: {
           appendTo: '#style-manager-container',
-          /*sectors: [{
-            name: 'Dimension',
-            open: false,
-            buildProps: ['width', 'height', 'max-width', 'min-height', 'margin', 'padding'],
-            properties:[{
-              property: 'margin',
-              properties:[
-                { name: 'Top', property: 'margin-top'},
-                { name: 'Right', property: 'margin-right'},
-                { name: 'Bottom', property: 'margin-bottom'},
-                { name: 'Left', property: 'margin-left'}
-              ],
-            },{
-              property  : 'padding',
-              detached: true,
-              properties:[
-                { name: 'Top', property: 'padding-top'},
-                { name: 'Right', property: 'padding-right'},
-                { name: 'Bottom', property: 'padding-bottom'},
-                { name: 'Left', property: 'padding-left'}
-              ],
-            }],
-          }]*/
         },
-        /*selectorManager: {
-          appendTo: '#selectors-container',
-        },*/
         traitManager: {
           appendTo: '#traits-container',
         },
@@ -187,16 +157,13 @@
             id: 'options',
             el: '#options-manager', 
             buttons: [{
-                id: 'preview',
-                className: 'fa fa-eye',
-                command: 'preview',
-                context: 'preview',
-                attributes: { title: 'Preview' }
+                id: 'undo',
+                className: 'fa fa-undo icon-undo',
+                command: function(e) { return e.runCommand('core:undo') }
               },{
-                id: 'export-template',
-                className: 'fa fa-code',
-                command: 'export-template',
-                attributes: { title: 'View code' }
+                id: 'redo',
+                className: 'fa fa-repeat icon-redo',
+                command: function(e) { return e.runCommand('core:redo') },
               }]
           }]
         }
