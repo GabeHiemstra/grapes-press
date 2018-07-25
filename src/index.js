@@ -83,7 +83,8 @@ export default grapesjs.plugins.add('gjs-press', (editor, opts = {}) => {
     const dm = editor.DeviceManager;
     dm.getAll().reset();
     dm.add('Desktop', '');
-    //dm.add('Mobile', '320px');
+    dm.add('Mobile', '320px');
+    dm.add('Tablet', '768px');
   }
 
 });
