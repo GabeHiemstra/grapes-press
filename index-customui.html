@@ -8,21 +8,20 @@
   <script src="dist/grapesjs-press.min.js"></script>
   <style>
     
-    body, html{ height: 100%; margin: 0;}
-    body, html{
-      margin: 0;
-      font: caption;
-      height: 100%;
-    }
+    body, html{height: 100%; margin: 0;}
 
+    #gjsContainer{height: 100%; font-family: "Segoe UI";}
     .gjs-pn-panel{position: relative;}
     .row{display: flex; justify-content: flex-start; align-items: stretch; flex-wrap: nowrap;}
     .column{min-height: 75px; flex-grow: 1; flex-basis: 100%; overflow: auto;}
     .editor-clm{display: flex; flex-direction: column;}
+    #block-manager{display:flex;flex-direction:column;align-items:stretch;flex-basis: 500px; text-align: center;}
+    #options-manager{top:auto;right:auto;}
+    #gjs2{overflow:hidden;}
+    #style-manager{flex-basis: 500px}
     .gjs-cv-canvas{width: 100%; height: 100%; top: 0;}
     .gjs-blocks-cs{border: 1px solid rgba(0,0,0,0.3); border-top: none;}
     .gjs-pn-buttons{justify-content: flex-end;}
-    /* Theming */
     .gjs-one-bg{background-color: #242A3B;}
     .gjs-two-color{color: #ddd;}
     .gjs-three-bg{background-color: #1E8FE1; color: white;}
@@ -32,16 +31,16 @@
 </head>
 <body>
 
-<div class="row" style="height:100%;">
+<div id="gjsContainer" class="row">
 
-  <div id="block-manager" class="column gjs-one-bg gjs-two-color" style="display:flex;flex-direction:column;align-items:stretch;flex-basis: 500px;">
+  <div id="block-manager" class="column gjs-one-bg gjs-two-color">
     Component Manager
     <br>
   </div>
 
   <div class="column editor-clm">
-    <div id="options-manager" style="top:auto;right:auto;"></div>
-    <div id="gjs2" style="overflow:hidden;">
+    <div id="options-manager"></div>
+    <div id="gjs2">
       <mj-container>
         <!-- Company Header -->
         <mj-section background-color="#f0f0f0">
@@ -114,7 +113,7 @@
     </div>
   </div>
 
-  <div id="style-manager" class="column" style="flex-basis: 500px">
+  <div id="style-manager" class="column">
     Style Manager
     <br>
     <!-- <div id="selectors-container"></div> -->
